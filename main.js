@@ -1,5 +1,5 @@
 import './style.css'
-import { getCharacters } from './src/akatsuki/akatsuki-app';
+import { getCharacters } from './src/mortyRick/rickMorty';
 
 document.querySelector('#app').innerHTML = `
   <div>
