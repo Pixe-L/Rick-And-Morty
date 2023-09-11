@@ -1,9 +1,3 @@
-function addBackground() {
-    document.body.style.backgroundImage = 'url(./assets/RandM.jpg)';
-    document.body.style.backgroundSize = 'cover';
-}
-
-
 export function getCharacters() {
     let search = document.getElementById('search');
     let btn = document.getElementById('btn-random');
@@ -12,14 +6,11 @@ export function getCharacters() {
         return Math.floor(Math.random() * 42) + 1;
     }
 
-    addBackground();
-    document.body.style.height = '100vh';
-
     btn.addEventListener('click', () => {
         let person = random();
         document.querySelector('.card').innerHTML = '';
         document.body.style.backgroundImage = 'none';
-
+        document.body.style.height = 'auto';
 
         fetch(`https://rickandmortyapi.com/api/character/?page=${person}`)
             .then((response) => {
@@ -56,15 +47,14 @@ export function getCharacters() {
             });
     })
 
+    addBackground();
+    document.body.style.height = '100vh';
 
     search.addEventListener('keyup', (event) => {
         if (event.keyCode === 13) {
             let character = search.value
-
             document.querySelector('.card').innerHTML = '';
-
             document.body.style.backgroundImage = 'none';
-
             document.body.style.height = 'auto';
 
             fetch(`https://rickandmortyapi.com/api/character/?name=${character}`)
@@ -102,4 +92,9 @@ export function getCharacters() {
                 });
         }
     });
+
+    function addBackground() {
+        document.body.style.backgroundImage = 'url(./assets/RandM.jpg)';
+        document.body.style.backgroundSize = 'cover';
+    }
 }
